@@ -1,13 +1,14 @@
 name: Email Step Check
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: prime-cache-a1863e3
+        run: echo "Required step for autograder"
+
       - name: 23f2000230@ds.study.iitm.ac.in
         run: echo "Hello, world!"
