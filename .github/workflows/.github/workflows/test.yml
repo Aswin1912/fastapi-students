@@ -1,9 +1,7 @@
-name: Test Workflow
+name: Email Step Check
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   test:
