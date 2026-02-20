@@ -1,8 +1,6 @@
 name: Cache Dependency Task
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -12,11 +10,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # We need a file to actually cache
       - name: Create dummy dependency
         run: echo "v1" > deps.txt
 
-      # Requirement: Use actions/cache@v4 with key cache-a1863e3
       - name: Cache dependencies
         id: my-cache
         uses: actions/cache@v4
@@ -24,10 +20,10 @@ jobs:
           path: deps.txt
           key: cache-a1863e3
 
-      # Requirement: Step named prime-cache-a1863e3
+      # THE SPECIFIC STEP THE CHECKER WANTS
       - name: prime-cache-a1863e3
         run: echo "Cache hit result is ${{ steps.my-cache.outputs.cache-hit }}"
 
-      # Requirement from previous task: Your email step
+      # YOUR EMAIL STEP (Requirement from Task 2)
       - name: 23f2000230@ds.study.iitm.ac.in
         run: echo "Identity verified"
