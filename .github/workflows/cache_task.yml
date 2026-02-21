@@ -1,12 +1,15 @@
-name: Test Email Step
+name: Email Step Test
 
 on:
-  workflow_dispatch:   # allows manual trigger
-  push:                # also triggers on push
+  workflow_dispatch:
+  push:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: 23f2000230@ds.study.iitm.ac.in
         run: echo "Hello, world!"
