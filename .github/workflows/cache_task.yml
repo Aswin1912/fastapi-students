@@ -1,24 +1,12 @@
-name: Email Step Check
+name: Test Email Step
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # allows manual trigger
+  push:                # also triggers on push
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: 23f2000230@ds.study.iitm.ac.in
-        run: echo "Identity Verified"
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Cache dependencies
-        id: cache-step
-        uses: actions/cache@v4
-        with:
-          path: README.md
-          key: cache-a1863e3
-
-      - name: prime-cache-a1863e3
-        run: echo "Cache status is ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Hello, world!"
