@@ -1,0 +1,24 @@
+name: CI Cache A1863E3
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  cache-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+          key: cache-a1863e3
+
+      - name: prime-cache-a1863e3
+        run: echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
