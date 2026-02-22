@@ -2,20 +2,15 @@ name: Cache Dependencies
 
 on:
   push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build:
+  cache-job:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Cache dependencies
         id: cache-deps
@@ -25,4 +20,4 @@ jobs:
           key: cache-a1863e3
 
       - name: prime-cache-a1863e3
-        run: echo "Cache hit: ${{ steps.cache-deps.outputs.cache-hit }}"
+        run: echo "Cache hit = ${{ steps.cache-deps.outputs.cache-hit }}"
