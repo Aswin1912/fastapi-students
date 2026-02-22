@@ -1,2 +1,19 @@
-- name: prime-cache-a1863e3
-  run: echo "Cache hit: ${{ steps.cache-deps.outputs.cache-hit }}"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: cache-a1863e3
+
+      - name: prime-cache-a1863e3
+        run: echo "Cache hit: ${{ steps.cache-deps.outputs.cache-hit }}"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
