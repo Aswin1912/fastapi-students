@@ -14,6 +14,3 @@ jobs:
 
       - name: prime-cache-a1863e3
         run: echo "Cache hit: ${{ steps.cache-deps.outputs.cache-hit }}"
-
-      - name: Install deps
-        run: pip install -r requirements.txt
